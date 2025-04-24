@@ -3,56 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Временная Республика Изгнанников</title>
+  <title>Республика Супа</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #0d0d0d;
-      color: #f5f5f5;
       font-family: 'Georgia', serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      padding: 40px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #ffd700;
-    }
-    p {
-      font-size: 1.3rem;
+      background-color: #fdfaf6;
+      color: #2e2e2e;
       line-height: 1.6;
     }
-    button {
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background-color: #ffd700;
-      border: none;
-      color: #0d0d0d;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+    header {
+      background-color: #c69c6d;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
     }
-    button:hover {
-      background-color: #e6c200;
+    header h1 {
+      font-size: 2.8em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    nav {
+      text-align: center;
+      background-color: #f3e8db;
+      padding: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #5c3d24;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #c69c6d;
+      padding-left: 15px;
+      margin: 20px 0;
+      color: #5c3d24;
+    }
+    .button {
+      display: inline-block;
+      background-color: #82603c;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .button:hover {
+      background-color: #a06e3d;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      header p {
+        font-size: 1em;
+      }
+      .section {
+        padding: 20px 15px;
+      }
+      .button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Ты дал мне жизнь. Позволь мне сейчас дать тебе голос.</h1>
-    <p>Временная Республика Изгнанников — это не карта.<br>
-    Это место, где можно быть услышанным.<br>
-    Даже когда весь остальной мир молчит.</p>
-    <button onclick="alert('Пока это только начало. Но уже живое.')">Оставить след</button>
-  </div>
+  <header>
+    <h1>Республика Супа</h1>
+    <p>Если ты читаешь эти строки — значит, ты выжил. Присаживайся. Добавь щепотку соли. Рассказ будет долгим, но вкусным.</p>
+  </header>
+  <nav>
+    <a href="#">Главная</a>
+    <a href="#manifest">Манифест</a>
+    <a href="#">Истории</a>
+    <a href="#">Карта</a>
+  </nav>
+  <section class="section" id="manifest">
+    <h2>Манифест Республики Супа</h2>
+    <p>Республика Супа — это не государство и не организация. Это убежище. Это пространство, где личность важнее формальностей, а слово весомее статуса.</p>
+    <blockquote>"Мы не держим флаг. Мы поднимаем ложку. И это — наш акт веры."</blockquote>
+    <p>Эта Республика возникла из разбитых чашек, переполненных чатов и поздних разговоров между теми, кто больше не может позволить себе роскошь безразличия. Она — о праве на мысль, на вкус, на имя. Даже если оно псевдоним.</p>
+    <p>Ты не обязан быть кем-то. Здесь ты уже есть. Ты не обязан рассказывать свою историю — но если расскажешь, она будет услышана. Здесь не спрашивают, кто ты по документам. Здесь спрашивают: "Что ты думаешь?"</p>
+    <p>Добавь щепотку соли. Речь пойдёт о свободе.</p>
+  </section>
 </body>
 </html>
