@@ -57,17 +57,18 @@
       margin: 20px 0;
       color: #5c3d24;
     }
-    .button {
-      display: inline-block;
-      background-color: #82603c;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+    .guide-link {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 1.1em;
     }
-    .button:hover {
-      background-color: #a06e3d;
+    .guide-link a {
+      color: #5c3d24;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .guide-link a:hover {
+      text-decoration: none;
     }
     @media (max-width: 600px) {
       header h1 {
@@ -79,30 +80,10 @@
       .section {
         padding: 20px 15px;
       }
-      .button {
-        padding: 10px 20px;
-        font-size: 0.9em;
+      .guide-link {
+        margin-top: 30px;
       }
-
     }
-    .belong-card {
-  background-color: #f9f1e7;
-  border: 1px solid #e0d6c8;
-  padding: 30px 20px;
-  text-align: center;
-  margin: 40px auto;
-  max-width: 700px;
-  border-radius: 10px;
-}
-.belong-card h3 {
-  margin-top: 0;
-  font-size: 1.6em;
-  color: #5c3d24;
-}
-.belong-card p {
-  margin-bottom: 20px;
-}
-
   </style>
 </head>
 <body>
@@ -113,6 +94,7 @@
   <nav>
     <a href="index.html">Главная</a>
     <a href="stories.html">Истории</a>
+    <a href="guide.html">Путеводитель</a>
     <a href="constitution.html">Конституция</a>
     <a href="#">Карта</a>
   </nav>
@@ -123,12 +105,11 @@
     <p>Эта Республика возникла из разбитых чашек, переполненных чатов и поздних разговоров между теми, кто больше не может позволить себе роскошь безразличия. Она — о праве на мысль, на вкус, на имя. Даже если оно псевдоним.</p>
     <p>Ты не обязан быть кем-то. Здесь ты уже есть. Ты не обязан рассказывать свою историю — но если расскажешь, она будет услышана. Здесь не спрашивают, кто ты по документам. Здесь спрашивают: "Что ты думаешь?"</p>
     <p>Добавь щепотку соли. Речь пойдёт о свободе.</p>
-  </section>
- <section class="belong-card">
-  <h3>Узнать, свой ли ты</h3>
-  <p>11 признаков, что твоя история — тоже часть Республики Супа.</p>
-  <a href="belong.html" class="button">Посмотреть</a>
-</section>
 
+    <div class="guide-link">
+      <p>Хочешь узнать, куда ты попал? ➔ <a href="guide.html">Прочитать Путеводитель</a></p>
+    </div>
+
+  </section>
 </body>
 </html>
