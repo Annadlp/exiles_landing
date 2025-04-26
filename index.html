@@ -136,21 +136,30 @@
   text-decoration: underline;
   font-weight: bold;
 }
- .nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 2rem;
-  }
-  .nav li {
-    position: relative;
-  }
-  .nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
+nav {
+  text-align: center;
+  background-color: #f5f0e6;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: #5c3d24;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -181,20 +190,13 @@
 <nav>
   <ul class="nav">
     <li><a href="/index.html">Главная</a></li>
-    
-    <li class="dropdown">
-      <a href="#">Истории</a>
-      <ul class="dropdown-menu">
-        <li><a href="/chronicle.html">Живая Хроника</a></li>
-        <!-- В будущем сюда добавятся новые истории -->
-      </ul>
-    </li>
-    
+    <li><a href="/history.html">Истории</a></li>
     <li><a href="/guide.html">Путеводитель</a></li>
     <li><a href="/constitution.html">Конституция</a></li>
     <li><a href="/map.html">Карта без границ</a></li>
   </ul>
 </nav>
+
 
   <section class="section">
     <h2>Манифест Республики Супа</h2>
