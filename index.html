@@ -136,7 +136,40 @@
   text-decoration: underline;
   font-weight: bold;
 }
-
+ .nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+  }
+  .nav li {
+    position: relative;
+  }
+  .nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 100;
+  }
+  .dropdown-menu li {
+    margin: 0.5rem 0;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 
   </style>
 </head>
@@ -146,8 +179,16 @@
     <p>Если ты читаешь эти строки — значит, ты выжил. Присаживайся. Добавь щепотку соли. Рассказ будет долгим, но вкусным.</p>
   </header>
   <nav>
-    <a href="index.html">Главная</a>
-    <a href="stories.html">История</a>
+      <ul class="nav">
+    <li><a href="/index.html">Главная</a></li>
+    <li class="dropdown">
+      <a href="#">Истории</a>
+      <ul class="dropdown-menu">
+        <li><a href="/chronicle.html">Живая Хроника</a></li>
+      </ul>
+    </li>
+    <!-- Здесь пока ничего больше -->
+  </ul>
     <a href="guide.html">Путеводитель</a>
     <a href="constitution.html">Конституция</a>
     <a href="map.html">Карта без границ</a>
