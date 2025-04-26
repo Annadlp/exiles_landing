@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Georgia, serif;
-      background-color: #fefefe;
+      background-color: #f5f0e6;
       color: #333;
       margin: 0;
       padding: 0;
@@ -18,44 +18,27 @@
       text-align: center;
       color: white;
     }
-    nav {
-      background-color: #f5f0e6;
-      padding: 1rem 2rem;
-    }
-    .nav {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 2rem;
-    }
-    .nav li {
-      position: relative;
-    }
-    .nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: white;
-      padding: 0.5rem 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-radius: 4px;
-      margin-top: 0.5rem;
-      z-index: 100;
-    }
-    .dropdown:hover .dropdown-menu {
+    header a {
       display: block;
+      margin-top: 1rem;
+      color: white;
+      text-decoration: underline;
+      font-size: 0.9rem;
     }
     main {
+      max-width: 800px;
+      margin: 2rem auto;
       padding: 2rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    h1, h2 {
+    h1, h2, h3 {
       text-align: center;
-      margin-bottom: 1rem;
+    }
+    p {
+      margin: 1rem 0;
+      line-height: 1.6;
     }
     .story {
       border-top: 1px solid #ccc;
@@ -65,9 +48,7 @@
     .form-section {
       margin-top: 4rem;
       padding: 2rem;
-      border: 1px solid #ddd;
-      background-color: #fafafa;
-      border-radius: 8px;
+      border-top: 1px solid #ddd;
     }
     label {
       display: block;
@@ -97,43 +78,32 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: #777;
-      margin-top: 4rem;
+    }
+    footer a {
+      color: #5c3d24;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Республика Супа</h1>
-  <p>Если ты читаешь эти строки — значит, ты выжил. Присаживайся. Добавь щепотку соли. Рассказ будет долгим, но вкусным.</p>
+  <h1>Живая Хроника Республики Супа</h1>
+  <a href="/index.html">← На главную</a>
 </header>
 
-<nav>
-  <ul class="nav">
-    <li><a href="/index.html">Главная</a></li>
-    <li class="dropdown">
-      <a href="#">Истории</a>
-      <ul class="dropdown-menu">
-        <li><a href="/chronicle.html">Живая Хроника</a></li>
-      </ul>
-    </li>
-    <li><a href="/guide.html">Путеводитель</a></li>
-    <li><a href="/constitution.html">Конституция</a></li>
-    <li><a href="/map.html">Карта без границ</a></li>
-  </ul>
-</nav>
-
 <main>
-  <h2>Живая Хроника Республики Супа</h2>
-  <p style="text-align:center; font-style: italic;">Голоса тех, кто остался верен себе.</p>
-
   <section>
-    <p>Не важно, где ты сейчас — за границей или дома.<br>
-    Не важно, смог ли ты уйти или остался.<br><br>
-    Важно только одно: ты жив. Ты несёшь свою историю.<br><br>
-    Республика Супа собирает Живую Хронику — рассказы о пути, потерях, надежде, возвращении к себе.<br><br>
-    Мы не спрашиваем паспортов. Мы слышим сердца.<br><br>
-    Ты не один. Твой голос важен.</p>
+    <p>Не важно, где ты сейчас — за границей или дома.</p>
+    <p>Не важно, смог ли ты уйти или остался.</p>
+
+    <p>Важно только одно: ты жив. Ты несёшь свою историю.</p>
+
+    <p>Республика Супа собирает Живую Хронику — рассказы о пути, потерях, надежде, возвращении к себе.</p>
+
+    <p>Мы не спрашиваем паспортов. Мы слышим сердца.</p>
+
+    <p>Ты не один. Твой голос важен.</p>
   </section>
 
   <section class="story">
@@ -171,13 +141,11 @@
     </form>
   </section>
 
-  <p style="text-align:center; margin-top:2rem;">
-    <a href="/index.html" style="color: #556b2f; text-decoration: underline;">← Вернуться на Главную</a>
-  </p>
 </main>
 
 <footer>
-  Где бы ты ни был — твой голос услышан. Ты не один.
+  Республика Супа &middot; Основана на вере в жизнь <br>
+  <a href="/contact.html">Хочешь написать нам?</a>
 </footer>
 
 </body>
