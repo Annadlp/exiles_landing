@@ -99,7 +99,8 @@
 
   <section class="form-section">
     <h2>Оставить свою историю</h2>
-    <form id="story-form">
+    <<form id="story-form" novalidate>
+>
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
 
@@ -129,26 +130,24 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
-<!-- 1. Подключаем библиотеку Supabase -->
+<!-- 1. Подключение библиотеки Supabase -->
 <script src="https://unpkg.com/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js" defer></script>
 
-<!-- 2. Пишем скрипт обработки формы, после полной загрузки страницы -->
+<!-- 2. Инициализация после полной загрузки -->
 <script defer>
 document.addEventListener('DOMContentLoaded', function() {
-  // Подключение к Supabase
   const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
+  const supabaseKey = 'твой реальный ключ';
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-  // Ловим отправку формы
   const form = document.getElementById('story-form');
   if (!form) {
-    console.error('Форма story-form не найдена!');
+    console.error('Форма не найдена!');
     return;
   }
 
   form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    e.preventDefault(); // очень важно!
 
     const name = document.getElementById('name').value.trim();
     const city = document.getElementById('city').value.trim();
@@ -177,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 </body>
 </html>
