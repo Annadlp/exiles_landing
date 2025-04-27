@@ -99,8 +99,7 @@
 
   <section class="form-section">
     <h2>Оставить свою историю</h2>
-    <div id="story-form" novalidate>
-
+    <form id="story-form" novalidate>
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
 
@@ -120,9 +119,8 @@
         Я хочу, чтобы моя история была размещена анонимно.
       </label>
 
-      <button id="submit-button" type="button">Отправить историю</button>
-
-    </div>
+      <button type="submit" id="submit-button">Отправить историю</button>
+    </form>
   </section>
 
 </main>
@@ -131,25 +129,24 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
-<!-- Подключение библиотеки Supabase -->
-<script src="https://unpkg.com/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js" defer></script>
+<!-- Подключение Supabase (v2) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- Инициализация Supabase и отправка истории -->
-<script defer>
-document.addEventListener('DOMContentLoaded', function() {
+<!-- Обработка отправки -->
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
   const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-  const supabaseKey = 'твой реальный ключ';
-  const client = window.supabase.createClient(supabaseUrl, supabaseKey);
+  const supabaseKey = 'твой реальный ключ'; 
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
   const form = document.getElementById('story-form');
-  const submitButton = document.getElementById('submit-button');
 
-  if (!form || !submitButton) {
-    console.error('Форма или кнопка не найдены!');
+  if (!form) {
+    console.error('Форма не найдена!');
     return;
   }
 
-  submitButton.addEventListener('click', async function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -166,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const finalName = anonymous ? "Анонимно" : (name || "Без имени");
 
-    const { data, error } = await client
+    const { data, error } = await supabase
       .from('stories')
       .insert([{ name: finalName, city: city || "Не указан", story: story }]);
 
