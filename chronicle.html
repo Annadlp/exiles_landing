@@ -15,19 +15,18 @@
     header {
       background-color: #d8b08c;
       color: white;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
       position: relative;
     }
     header h1 {
-      margin: 0;
+      margin: 0 0 1rem;
       font-size: 2.5rem;
       font-weight: bold;
     }
     header a {
-      position: absolute;
-      left: 1rem;
-      top: 2rem;
+      display: inline-block;
+      margin-top: 0.5rem;
       color: white;
       text-decoration: none;
       font-weight: bold;
@@ -48,7 +47,7 @@
       border: 1px solid #eee;
       border-radius: 8px;
     }
-    input, textarea {
+    input[type="text"], textarea {
       width: 100%;
       padding: 0.75rem;
       margin-top: 0.5rem;
@@ -57,8 +56,16 @@
       font-family: inherit;
       font-size: 1rem;
     }
+    .checkbox-group {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
     button {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       padding: 0.75rem 1.5rem;
       background-color: #556b2f;
       color: white;
@@ -66,6 +73,9 @@
       border-radius: 4px;
       font-size: 1rem;
       cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     button:hover {
       background-color: #6b8e23;
@@ -83,8 +93,8 @@
 <body>
 
 <header>
-  <a href="/index.html">← На главную</a>
   <h1>Живая Хроника Республики Супа</h1>
+  <a href="/index.html">← На главную</a>
 </header>
 
 <main>
@@ -100,6 +110,7 @@
   <section class="form-section">
     <h2>Оставить свою историю</h2>
     <form id="story-form" novalidate>
+
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
 
@@ -109,15 +120,15 @@
       <label for="story">Твоя история</label>
       <textarea id="story" name="story" rows="6" required></textarea>
 
-      <label>
+      <div class="checkbox-group">
         <input type="checkbox" name="publishConsent" required>
-        Я разрешаю опубликовать мою историю на сайте Республики Супа.
-      </label>
+        <label>Я разрешаю опубликовать мою историю на сайте Республики Супа.</label>
+      </div>
 
-      <label>
+      <div class="checkbox-group">
         <input type="checkbox" name="anonymous">
-        Я хочу, чтобы моя история была размещена анонимно.
-      </label>
+        <label>Я хочу, чтобы моя история была размещена анонимно.</label>
+      </div>
 
       <button type="submit" id="submit-button">Отправить историю</button>
     </form>
@@ -129,14 +140,11 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
-<!-- Подключение Supabase (v2) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- Обработка отправки -->
 <script>
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
   const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s'; 
+  const supabaseKey = 'твóй реальный ключ';
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
   const form = document.getElementById('story-form');
