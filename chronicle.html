@@ -157,38 +157,40 @@
 </script>
 
 <script>
-// Теперь ловим отправку формы
-document.getElementById('story-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('name').value.trim();
-  const city = document.getElementById('city').value.trim();
-  const story = document.getElementById('story').value.trim();
-
-  if (!name || !city || !story) {
-    alert('Пожалуйста, заполните все поля!');
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('story-form');
+  if (!form) {
+    console.error('Форма story-form не найдена!');
     return;
   }
 
-  const { data, error } = await supabase
-    .from('stories')
-    .insert([
-      {
-        name: name,
-        city: city,
-        story: story
-      }
-    ]);
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  if (error) {
-    console.error('Ошибка сохранения:', error);
-    alert('Ошибка при отправке. Попробуйте снова.');
-  } else {
-    alert('История отправлена! Спасибо за ваш голос в Республике.');
-    document.getElementById('story-form').reset();
-  }
+    const name = document.getElementById('name').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const story = document.getElementById('story').value.trim();
+
+    if (!name || !city || !story) {
+      alert('Пожалуйста, заполните все поля!');
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('stories')
+      .insert([{ name, city, story }]);
+
+    if (error) {
+      console.error('Ошибка сохранения:', error);
+      alert('Ошибка при отправке. Попробуйте снова.');
+    } else {
+      alert('История отправлена! Спасибо за ваш голос в Республике.');
+      form.reset();
+    }
+  });
 });
 </script>
+
 
 
 </body>
