@@ -99,7 +99,8 @@
 
   <section class="form-section">
     <h2>Оставить свою историю</h2>
-    <form id="story-form" novalidate>
+    <div id="story-form" novalidate>
+
 
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
@@ -120,7 +121,8 @@
         Я хочу, чтобы моя история была размещена анонимно.
       </label>
 
-      <button type="submit">Отправить историю</button>
+      <button id="submit-button">Отправить историю</button>
+
     </form>
   </section>
 
@@ -141,16 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
   const form = document.getElementById('story-form');
-  if (!form) {
-    console.error('Форма не найдена!');
+  const submitButton = document.getElementById('submit-button');
+
+  if (!form || !submitButton) {
+    console.error('Форма или кнопка не найдены!');
     return;
   }
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault(); // очень важно!
-   
-e.stopPropagation();
-
+  submitButton.addEventListener('click', async function(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
     const name = document.getElementById('name').value.trim();
     const city = document.getElementById('city').value.trim();
@@ -178,6 +180,7 @@ e.stopPropagation();
     }
   });
 });
+
 </script>
 
 
