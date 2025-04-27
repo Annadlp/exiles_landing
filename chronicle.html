@@ -12,7 +12,6 @@
       color: #333;
       line-height: 1.6;
     }
-
     header {
       background-color: #d8b08c;
       color: white;
@@ -20,13 +19,11 @@
       text-align: center;
       position: relative;
     }
-
     header h1 {
       margin: 0;
       font-size: 2.5rem;
       font-weight: bold;
     }
-
     header a {
       position: absolute;
       left: 1rem;
@@ -36,7 +33,6 @@
       font-weight: bold;
       font-size: 1rem;
     }
-
     main {
       max-width: 800px;
       margin: 3rem auto;
@@ -45,22 +41,6 @@
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-
-    h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    p, label {
-      font-size: 1rem;
-    }
-
-    section {
-      margin-top: 2rem;
-    }
-
     .form-section {
       margin-top: 4rem;
       background-color: #fafafa;
@@ -68,13 +48,6 @@
       border: 1px solid #eee;
       border-radius: 8px;
     }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-
     input, textarea {
       width: 100%;
       padding: 0.75rem;
@@ -84,7 +57,6 @@
       font-family: inherit;
       font-size: 1rem;
     }
-
     button {
       margin-top: 1.5rem;
       padding: 0.75rem 1.5rem;
@@ -95,11 +67,9 @@
       font-size: 1rem;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #6b8e23;
     }
-
     footer {
       text-align: center;
       margin: 4rem auto 2rem;
@@ -123,24 +93,12 @@
 
   <section>
     <p>Не важно, где ты сейчас — за границей или дома.<br>
-    Не важно, смог ли ты уйти или остался.<br><br>
-    Важно только одно: ты жив. Ты несёшь свою историю.<br><br>
-    Республика Супа собирает Живую Хронику — рассказы о пути, потерях, надежде, возвращении к себе.<br><br>
-    Мы не спрашиваем паспортов. Мы слышим сердца.<br><br>
-    Ты не один. Твой голос важен.</p>
-  </section>
-
-  <section class="story">
-    <h2>Истории:</h2>
-    <p><strong>Один из голосов Республики</strong><br>
-    <em>Город: неизвестен</em><br>
-    "Я ехала ночью через границу, с одним чемоданом..."</p>
+    Республика Супа собирает Живую Хронику — рассказы о пути, потерях, надежде, возвращении к себе.<br>
+    Мы слышим сердца.</p>
   </section>
 
   <section class="form-section">
     <h2>Оставить свою историю</h2>
-    <p>Ты можешь отправить свою историю анонимно. Указывать имя и город необязательно. Мы публикуем только с твоего согласия.</p>
-
     <form id="story-form" action="#" method="POST">
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
@@ -171,16 +129,18 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
-<script src="https://unpkg.com/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js"></script>
+<!-- 1. Подключаем библиотеку Supabase -->
+<script src="https://unpkg.com/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js" defer></script>
 
-<script>
-  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s'; 
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-</script>
-
-<script>
+<!-- 2. Пишем скрипт обработки формы, после полной загрузки страницы -->
+<script defer>
 document.addEventListener('DOMContentLoaded', function() {
+  // Подключение к Supabase
+  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Ловим отправку формы
   const form = document.getElementById('story-form');
   if (!form) {
     console.error('Форма story-form не найдена!');
@@ -201,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    const finalName = anonymous ? "Анонимно" : name || "Без имени";
+    const finalName = anonymous ? "Анонимно" : (name || "Без имени");
 
     const { data, error } = await supabase
       .from('stories')
@@ -217,8 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-
-
 
 </body>
 </html>
