@@ -6,63 +6,66 @@
   <title>Живая Хроника Республики Супа</title>
   <style>
     body {
-      font-family: Georgia, serif;
-      background-color: #fefefe;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: Georgia, serif;
+      background-color: #f4f1ea;
+      color: #333;
       line-height: 1.6;
     }
 
     header {
-      background-color: #556b2f;
+      background-color: #d8b08c;
       color: white;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       text-align: center;
       position: relative;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: bold;
     }
 
     header a {
       position: absolute;
-      right: 1.5rem;
-      top: 1.5rem;
-      background: white;
-      color: #556b2f;
+      left: 1rem;
+      top: 2rem;
+      color: white;
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     main {
       max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .intro {
+    h2 {
       text-align: center;
-      font-style: italic;
-      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
-    section.story {
-      border-top: 1px solid #ccc;
-      padding-top: 2rem;
+    p, label {
+      font-size: 1rem;
+    }
+
+    section {
       margin-top: 2rem;
     }
 
     .form-section {
       margin-top: 4rem;
-      padding: 2rem;
-      border: 1px solid #ddd;
       background-color: #fafafa;
+      padding: 2rem;
+      border: 1px solid #eee;
       border-radius: 8px;
     }
 
@@ -74,7 +77,7 @@
 
     input, textarea {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.75rem;
       margin-top: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -97,13 +100,11 @@
       background-color: #6b8e23;
     }
 
-    .footer-text {
+    footer {
       text-align: center;
-      padding: 2rem;
+      margin: 4rem auto 2rem;
       font-style: italic;
       color: #777;
-      border-top: 1px solid #ddd;
-      margin-top: 4rem;
       font-size: 0.9rem;
     }
   </style>
@@ -112,14 +113,13 @@
 <body>
 
 <header>
+  <a href="/index.html">← На главную</a>
   <h1>Живая Хроника Республики Супа</h1>
-  <a href="/index.html">На главную</a>
 </header>
 
 <main>
-  <div class="intro">
-    <p>Голоса тех, кто остался верен себе.</p>
-  </div>
+
+  <p style="text-align:center; font-style: italic;">Голоса тех, кто остался верен себе.</p>
 
   <section>
     <p>Не важно, где ты сейчас — за границей или дома.<br>
@@ -167,10 +167,8 @@
 
 </main>
 
-  <footer class="footer">
-  Республика Супа · Основана на вере в жизнь
-  <a href="contact.html" style="font-size:0.9em;">Хочешь написать нам?</a>
-
+<footer>
+  Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
 </body>
