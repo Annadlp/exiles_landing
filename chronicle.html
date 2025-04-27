@@ -3,200 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Живая Хроника Республики Супа</title>
-  <style>
-    body {
-      font-family: Georgia, serif;
-      background-color: #f5f0e6;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #d2a679;
-      padding: 2rem;
-      text-align: center;
-      color: white;
-    }
-    header a {
-      display: block;
-      margin-top: 1rem;
-      color: white;
-      text-decoration: underline;
-      font-size: 0.9rem;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    h1, h2, h3 {
-      text-align: center;
-    }
-    p {
-      margin: 1rem 0;
-      line-height: 1.6;
-    }
-    .story {
-      border-top: 1px solid #ccc;
-      padding-top: 1rem;
-      margin-top: 2rem;
-    }
-    .story-form {
-      margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid #ddd;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #556b2f;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    footer {
-      background-color: #f5f0e6;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    footer a {
-      color: #5c3d24;
-      text-decoration: underline;
-    }
-  </style>
+  <title>Оставить свою историю | Республика Супа</title>
 </head>
 <body>
 
-<header>
-  <h1>Живая Хроника Республики Супа</h1>
-  <a href="/index.html">← На главную</a>
-</header>
+<section class="story-form">
+  <h3>Оставить свою историю</h3>
+  <p>Ты можешь отправить свою историю анонимно. Указывать имя и город необязательно. Мы публикуем только с твоего согласия.</p>
 
-<main>
-  <section>
-    <p>Не важно, где ты сейчас — за границей или дома.</p>
-    <p>Не важно, смог ли ты уйти или остался.</p>
+  <form id="story-form" action="#" method="POST">
+    <label for="name">Имя или псевдоним (необязательно)</label>
+    <input type="text" id="name" name="name">
 
-    <p>Важно только одно: ты жив. Ты несёшь свою историю.</p>
+    <label for="city">Город или страна (необязательно)</label>
+    <input type="text" id="city" name="city">
 
-    <p>Республика Супа собирает Живую Хронику — рассказы о пути, потерях, надежде, возвращении к себе.</p>
+    <label for="story">Твоя история</label>
+    <textarea id="story" name="story" rows="6" required></textarea>
 
-    <p>Мы не спрашиваем паспортов. Мы слышим сердца.</p>
+    <label>
+      <input type="checkbox" name="publishConsent" required>
+      Я разрешаю опубликовать мою историю на сайте Республики Супа.
+    </label>
 
-    <p>Ты не один. Твой голос важен.</p>
-  </section>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
 
-  <section class="story">
-    <h3>Истории:</h3>
-    <p><strong>Один из голосов Республики</strong><br>
-    <em>Город: неизвестен</em><br>
-    "Я ехала ночью через границу, с одним чемоданом..."</p>
-  </section>
-
-  <section class="story-form">
-    <h3>Оставить свою историю</h3>
-    <p>Ты можешь отправить свою историю анонимно. Указывать имя и город необязательно. Мы публикуем только с твоего согласия.</p>
-
-
-    <form id="story-form" action="#" method="POST">
-      <label for="name">Имя или псевдоним (необязательно)</label>
-      <input type="text" id="name" name="name">
-
-      <label for="city">Город или страна (необязательно)</label>
-      <input type="text" id="city" name="city">
-
-      <label for="story">Твоя история</label>
-      <textarea id="story" name="story" rows="6" required></textarea>
-
-      <label>
-        <input type="checkbox" name="publishConsent" required>
-        Я разрешаю опубликовать мою историю на сайте Республики Супа.
-      </label>
-
-      <label>
-        <input type="checkbox" name="anonymous">
-        Я хочу, чтобы моя история была размещена анонимно.
-      </label>
-
-      <button type="submit">Отправить историю</button>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  Республика Супа &middot; Основана на вере в жизнь <br>
-  <a href="/contact.html">Хочешь написать нам?</a>
-</footer>
-
- <!-- Подключаем Supabase библиотеку v1 -->
+<!-- Подключение Supabase библиотеки (ВЕРНАЯ версия 1) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6"></script>
 
-<!-- Создаем клиента Supabase -->
+<!-- Инициализация клиента Supabase -->
 <script>
-const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
 
-<!-- Ловим отправку формы -->
+<!-- Код обработки отправки формы -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('story-form');
-  if (!form) {
-    console.error('Форма story-form не найдена!');
-    return;
-  }
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const story = document.getElementById('story').value.trim();
-
-    if (!name || !city || !story) {
-      alert('Пожалуйста, заполните все поля!');
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('story-form');
+    if (!form) {
+      console.error('Форма story-form не найдена!');
       return;
     }
 
-    const { data, error } = await supabase
-      .from('stories')
-      .insert([{ name, city, story }]);
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
 
-    if (error) {
-      console.error('Ошибка сохранения:', error);
-      alert('Ошибка при отправке. Попробуйте снова.');
-    } else {
-      alert('История отправлена! Спасибо за ваш голос в Республике.');
-      form.reset();
-    }
+      const name = document.getElementById('name').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const story = document.getElementById('story').value.trim();
+      const consent = form.querySelector('input[name="publishConsent"]').checked;
+
+      if (!name || !city || !story || !consent) {
+        alert('Пожалуйста, заполните все поля и подтвердите согласие.');
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('stories')
+        .insert([{ name, city, story }]);
+
+      if (error) {
+        console.error('Ошибка сохранения:', error);
+        alert('Ошибка при отправке. Попробуйте снова.');
+      } else {
+        alert('История отправлена! Спасибо за ваш голос в Республике.');
+        form.reset();
+      }
+    });
   });
-});
 </script>
-
-
-
 
 </body>
 </html>
