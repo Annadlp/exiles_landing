@@ -171,17 +171,17 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
-  <!-- Подключение библиотеки Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6"></script>
+ <!-- Подключение правильной версии библиотеки -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js"></script>
 
-<!-- Инициализация клиента Supabase -->
+<!-- Инициализация клиента -->
 <script>
-  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';  // твой адрес проекта
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
+  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....';
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
 
-<!-- Код отправки данных в базу -->
+<!-- Код отправки формы -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('story-form');
@@ -208,13 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const { data, error } = await supabase
       .from('stories')
-      .insert([
-        {
-          name: finalName,
-          city: city || "Не указан",
-          story: story
-        }
-      ]);
+      .insert([{ name: finalName, city: city || "Не указан", story: story }]);
 
     if (error) {
       console.error('Ошибка сохранения:', error);
@@ -226,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 </body>
 </html>
