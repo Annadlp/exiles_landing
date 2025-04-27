@@ -185,14 +185,14 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Ошибка сохранения:', error);
       alert('Ошибка при отправке. Попробуйте снова.');
     } else {
-      const successMessage = document.getElementById('success-message');
+     const successMessage = document.getElementById('success-message');
 successMessage.style.display = 'block';
 
 setTimeout(() => {
   successMessage.style.display = 'none';
 }, 4000); // скрыть через 4 секунды
 
-      const storiesSection = document.querySelector('section.story');
+const storiesSection = document.querySelector('section.story');
 
 const storyBlock = document.createElement('div');
 storyBlock.classList.add('single-story');
@@ -201,11 +201,11 @@ storyBlock.innerHTML = `
   <em>Город: ${city || "Не указан"}</em><br>
   "${story}"</p>
 `;
+
 storiesSection.appendChild(storyBlock);
 
+form.reset();
 
-      
-      form.reset();
     }
   });
 });
