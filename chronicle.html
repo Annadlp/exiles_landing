@@ -99,8 +99,8 @@
 
   <section class="form-section">
     <h2>Оставить свою историю</h2>
-    <<form id="story-form" novalidate>
->
+    <form id="story-form" novalidate>
+
       <label for="name">Имя или псевдоним (необязательно)</label>
       <input type="text" id="name" name="name">
 
@@ -148,6 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault(); // очень важно!
+    e.preventDefault();
+e.stopPropagation();
+
 
     const name = document.getElementById('name').value.trim();
     const city = document.getElementById('city').value.trim();
