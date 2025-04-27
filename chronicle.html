@@ -149,14 +149,17 @@
   <a href="/contact.html">Хочешь написать нам?</a>
 </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6"></script>
+ <!-- Подключаем Supabase библиотеку v1 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6"></script>
 
+<!-- Создаем клиента Supabase -->
 <script>
-  const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co'; // сюда твой настоящий адрес
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s'; // сюда твой ключ
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhdnduY3RvYmNwbGpnZ2N0Z2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNTE2MzYsImV4cCI6MjA2MDkyNzYzNn0.Y2vqVsXDPnr84g95Yb2vJvxcHk1hCzGID5lCcbu9S-s';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
 
+<!-- Ловим отправку формы -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('story-form');
@@ -191,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 
 
