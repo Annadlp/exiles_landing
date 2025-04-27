@@ -171,17 +171,12 @@
   Где бы ты ни был — твой голос услышан. Ты не один.
 </footer>
 
- <!-- Подключение правильной версии библиотеки -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6/dist/umd/supabase.min.js"></script>
-
-<!-- Инициализация клиента -->
 <script>
   const supabaseUrl = 'https://xavwnctobcpljggctgdk.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....';
+  const supabaseKey = 'твой ключ';
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
-
-<!-- Код отправки формы -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('story-form');
@@ -220,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 
 </body>
