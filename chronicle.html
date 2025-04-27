@@ -136,6 +136,10 @@
 
 </main>
 
+<div id="success-message" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background-color:#556b2f; color:white; padding:1rem 2rem; border-radius:8px; font-size:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:1000;">
+  История отправлена! Спасибо за ваш голос в Республике.
+</div>
+
   <footer class="footer">
     Республика Супа · Основана на вере в жизнь
     <a href="contact.html" style="font-size:0.9em;">Хочешь написать нам?</a>
@@ -181,7 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Ошибка сохранения:', error);
       alert('Ошибка при отправке. Попробуйте снова.');
     } else {
-      alert('История отправлена! Спасибо за ваш голос в Республике.');
+      const successMessage = document.getElementById('success-message');
+successMessage.style.display = 'block';
+
+setTimeout(() => {
+  successMessage.style.display = 'none';
+}, 4000); // скрыть через 4 секунды
+
       form.reset();
     }
   });
