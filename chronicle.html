@@ -192,6 +192,19 @@ setTimeout(() => {
   successMessage.style.display = 'none';
 }, 4000); // скрыть через 4 секунды
 
+      const storiesSection = document.querySelector('.story');
+
+const storyBlock = document.createElement('div');
+storyBlock.classList.add('story');
+storyBlock.innerHTML = `
+  <p><strong>${finalName}</strong><br>
+  <em>Город: ${city || "Не указан"}</em><br>
+  "${story}"</p>
+`;
+
+storiesSection.appendChild(storyBlock);
+
+      
       form.reset();
     }
   });
