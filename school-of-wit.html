@@ -68,9 +68,59 @@
       color: #777;
       font-size: 0.9rem;
     }
+    body {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
+.manifest {
+  background-color: #faf3e0;
+  border: 2px solid #d8b08c;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.manifest p {
+  font-family: \"Georgia\", serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #5b4636;
+}
+    .courses ul li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.courses ul li:hover {
+  transform: scale(1.03);
+  color: #556b2f;
+}
+.accent-line {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6b8e23;
+}
+header a {
+  transition: color 0.3s ease;
+}
+header a:hover {
+  color: #ffeeaa;
+}
+
+
   </style>
 </head>
 <body>
+
+  <script>
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+  });
+</script>
+
 
 <header>
   <h1>Школа Остроумия для Тёмных Времён</h1>
@@ -83,7 +133,7 @@
   <section class="manifest">
     <h2>Манифест Школы</h2>
     <p style="text-align:center; font-style: italic;">
-      Смех — наш горн.<br>
+      <span class="accent-line">Смех — наш горн.</span><br>
       Ирония — наш щит.<br>
       Ясный ум — наш союзник.
     </p>
