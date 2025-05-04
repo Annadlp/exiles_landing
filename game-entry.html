@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проверь свою супоспособность</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fdfaf6;
+      color: #2e2e2e;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
+    .question {
+      margin-bottom: 2em;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    button {
+      background-color: #c69c6d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a77b52;
+    }
+    .result {
+      margin-top: 2em;
+      padding: 1em;
+      border: 2px dashed #c69c6d;
+      background-color: #fff7ef;
+    }
+    .next-link {
+      display: block;
+      margin-top: 1.5em;
+      text-align: center;
+      font-weight: bold;
+      color: #5c3d24;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Проверь свою супоспособность</h1>
+  <form id="quiz-form">
+    <div class="question">
+      <p>1. Кто ты у костра?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="g"> Тот, кто принесёт хлеб.</label>
+        <label><input type="radio" name="q1" value="s"> Тот, кто будет молчать, пока все говорят.</label>
+        <label><input type="radio" name="q1" value="m"> Тот, кто бросит шутку, даже если никто не смеётся.</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>2. Что ты скажешь тому, кто плачет?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="s"> “Я рядом.”</label>
+        <label><input type="radio" name="q2" value="g"> “Поплачь — это тоже действие.”</label>
+        <label><input type="radio" name="q2" value="m"> “Давай молча сидеть рядом и есть суп.”</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>3. Что для тебя мечта?</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="m"> Убежать туда, где не больно.</label>
+        <label><input type="radio" name="q3" value="g"> Способ стать собой.</label>
+        <label><input type="radio" name="q3" value="s"> Ложка реальности с привкусом невозможного.</label>
+      </div>
+    </div>
+
+    <button type="submit">Узнать свой образ</button>
+  </form>
+
+  <div id="result" class="result" style="display: none;"></div>
+  <a id="oath-link" href="constitution.html#oath" class="next-link" style="display: none;">Перейти к клятве на Конституции</a>
+
+  <script>
+    const form = document.getElementById('quiz-form');
+    const resultDiv = document.getElementById('result');
+    const oathLink = document.getElementById('oath-link');
+
+    const results = {
+      g: 'Ты — Собиратель Имен. Ты умеешь слушать, запоминать и создавать смыслы там, где другим просто шум.',
+      s: 'Ты — Хранитель Тишины. В тебе есть пространство, в котором можно отдохнуть. Ты — пауза между мирами.',
+      m: 'Ты — Вздорный Мечтатель. Ты приносишь хаос и свет, ломая шаблоны, но всегда с добротой в сердце.'
+    };
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      let score = { g: 0, s: 0, m: 0 };
+
+      for (let [key, value] of formData.entries()) {
+        score[value]++;
+      }
+
+      let dominant = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0];
+      resultDiv.textContent = results[dominant];
+      resultDiv.style.display = 'block';
+      oathLink.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
