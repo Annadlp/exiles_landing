@@ -164,6 +164,32 @@
 
   </div>
 
+  <div style="margin-top: 60px; text-align: center;">
+  <p style="font-size: 1.2em;"><strong>♞ Поделись уроком остроумия</strong></p>
+  <p style="font-style: italic; color: #555; max-width: 600px; margin: 0 auto 20px;">
+    Смех — это форма сопротивления. Не прячь его в карман.
+  </p>
+  <textarea id="shareTextWit" style="width: 80%; max-width: 600px; height: 100px; font-family: Georgia, serif; padding: 10px; font-size: 1em;">
+Школа Остроумия учит выживать красиво и мстить без насилия.  
+Республика Супа. Неофициальная. Настоящая.  
+https://exiles-landing.vercel.app/school-of-wit.html
+  </textarea>
+  <br>
+  <button onclick="copyToClipboardWit()" style="margin-top: 10px; padding: 10px 20px; font-size: 1em; background-color: #c69c6d; color: white; border: none; border-radius: 8px;">
+    📋 Скопировать текст
+  </button>
+</div>
+
+<script>
+function copyToClipboardWit() {
+  var copyText = document.getElementById("shareTextWit");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Текст скопирован! Поделись иронией в Threads.");
+}
+</script>
+
 </section>
 
 </main>
