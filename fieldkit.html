@@ -132,6 +132,33 @@
     <p><em>Ты можешь добавить в этот Набор что-то своё.  
     Республика живёт благодаря тому, что приносит каждый.</em></p>
 
+    <div style="margin-top: 60px; text-align: center;">
+  <p style="font-size: 1.2em;"><strong>🧭 Поделись полевым знанием</strong></p>
+  <p style="font-style: italic; color: #555; max-width: 600px; margin: 0 auto 20px;">
+    Всё своё ношу с собой. Теперь ты тоже.
+  </p>
+  <textarea id="shareTextKit" style="width: 80%; max-width: 600px; height: 100px; font-family: Georgia, serif; padding: 10px; font-size: 1em;">
+Нашёл руководство, как выжить в изгнании и не стать циником.  
+Полевой набор Республики Супа:  
+https://exiles-landing.vercel.app/fieldkit.html
+  </textarea>
+  <br>
+  <button onclick="copyToClipboardKit()" style="margin-top: 10px; padding: 10px 20px; font-size: 1em; background-color: #c69c6d; color: white; border: none; border-radius: 8px;">
+    📋 Скопировать текст
+  </button>
+</div>
+
+<script>
+function copyToClipboardKit() {
+  var copyText = document.getElementById("shareTextKit");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Текст скопирован! Отправь его в путь.");
+}
+</script>
+
+
   </section>
 
   <footer class="footer">
