@@ -220,6 +220,33 @@
     Я принимаю Конституцию
   </button>
 </div>
+    <hr style="margin: 60px auto; width: 80%; border: none; border-top: 1px solid #c69c6d;">
+
+<div style="margin-top: 40px; text-align: center;">
+  <p style="font-size: 1.2em;"><strong>📡 Поделись Манифестом Республики в Threads</strong></p>
+  <p style="font-style: italic; color: #555; max-width: 600px; margin: 0 auto 20px;">
+    Если тебе отозвалось — неси дальше. Республика живёт, пока её читают.
+  </p>
+  <textarea id="shareText" style="width: 80%; max-width: 600px; height: 100px; font-family: Georgia, serif; padding: 10px; font-size: 1em;">
+Я нашёл место, где память жива, ирония — оружие, а суп — основа Конституции. 🇸
+Республика Супа: https://exiles-landing.vercel.app/
+  </textarea>
+  <br>
+  <button onclick="copyToClipboard()" style="margin-top: 10px; padding: 10px 20px; font-size: 1em; background-color: #c69c6d; color: white; border: none; border-radius: 8px;">
+    📋 Скопировать текст
+  </button>
+</div>
+
+<script>
+function copyToClipboard() {
+  var copyText = document.getElementById("shareText");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Текст скопирован! Вставь его в Threads и стань голосом Республики.");
+}
+</script>
+
 
   </section>
   <footer class="footer">
