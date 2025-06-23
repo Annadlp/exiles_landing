@@ -1,127 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Рыболовный квест</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Квест: Попробуй выжить как коренной рыбак</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 2rem;
+      font-family: Arial, sans-serif;
       max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #f9f9f9;
+      color: #222;
     }
-    h1, h2 {
+    h1 {
       text-align: center;
-      color: #1c1c1c;
     }
-    .choice {
-      margin: 1rem 0;
+    .question {
+      margin: 2em 0 1em;
     }
-    .choice a {
-      text-decoration: none;
-      color: #fff;
-      background-color: #0077cc;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 0.5rem;
+    .hidden {
+      display: none;
     }
-    .choice a:hover {
-      background-color: #005fa3;
+    .result {
+      font-weight: bold;
+      color: darkred;
+      margin-top: 1em;
     }
-    .outro {
-      background:#1c1c1c;
-      color:#fff;
-      padding:2rem;
-      margin-top:3rem;
-      border-left:6px solid #e63946;
-      border-radius:1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5em;
+      font-size: 1em;
     }
-    .outro h2 {
-      text-align:center;
-      font-size:1.5rem;
-      margin-bottom:1.5rem;
-    }
-    .outro blockquote {
-      font-style:italic;
-      font-size:1.1rem;
-      line-height:1.7;
-      max-width:720px;
-      margin:0 auto 1.5rem auto;
-      text-align:center;
-    }
-    .outro a {
-      background:#e63946;
-      color:#fff;
-      padding:0.8rem 1.5rem;
-      text-decoration:none;
-      border-radius:0.5rem;
-      font-weight:bold;
-      box-shadow:0 2px 5px rgba(0,0,0,0.3);
-    }
-    .outro p {
-      margin-top:0.8rem;
-      font-size:0.9rem;
-      color:#aaa;
-      text-align:center;
+    button {
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      margin-top: 0.5em;
     }
   </style>
 </head>
 <body>
   <h1>Квест: Попробуй выжить как коренной рыбак</h1>
 
-  <p>Ты встаёшь рано утром. Сегодня ты идёшь ставить сеть. Это сеть твоей семьи, но законы изменились. Что ты делаешь?</p>
-
-  <div class="choice">
-    <p><strong>Ты просишь сына помочь поставить сеть.</strong></p>
-    <a href="#fail1">➡ Нарушение. Ты не имел права передавать выполнение другим. Штраф.</a>
-  </div>
-
-  <div class="choice">
-    <p><strong>Ты идешь ставить сеть сам, но не подписал её.</strong></p>
-    <a href="#fail2">➡ Нарушение. Сеть без подписи. Штраф, даже если не поймал ни одной рыбы.</a>
-  </div>
-
-  <div class="choice">
-    <p><strong>Ты подписал сеть, но забыл паспорт дома.</strong></p>
-    <a href="#fail3">➡ Нарушение. Нет документа – ты вне закона. Штраф.</a>
-  </div>
-
-  <div class="choice">
-    <p><strong>Ты подписал сеть, взял паспорт, но не заполнил промысловый журнал.</strong></p>
-    <a href="#fail4">➡ Нарушение. Даже если ты пенсионер. Журнал обязателен. Штраф.</a>
-  </div>
-
-  <div class="choice">
-    <p><strong>Ты всё сделал по правилам. Подписал сеть, сам поставил, взял паспорт, есть журнал.</strong></p>
-    <a href="#pass">✅ На этот раз тебе повезло. Нарушений нет. Ты не умер. Пока.</a>
-  </div>
-
-  <div class="outro">
-    <h2>🎣 Сеть твоя — лови сама</h2>
-    <blockquote>
-      «Мы всю жизнь старались быть правильными людьми.  
-      Ставили сети, как положено. Не воровали, не прятались.  
-      А теперь мне говорят — сама ставь, сама подписывай,  
-      сама в лодку садись. Сама, сама, сама…  
-      А если сын поставил — всё, уже нарушение.  
-      Словно я преступница.  
-      Я никогда не чувствовала себя преступницей.  
-      А теперь стыдно. И больно. И страшно».
-    </blockquote>
-    <div style="text-align:center; margin-top:2rem;">
-      <a href="mailto:republica.supa@protonmail.com?subject=Моя история о рыболовстве">
-        📬 Рассказать свою историю
-      </a>
-      <p>
-        Мы сохраняем анонимность и никогда не публикуем ничего без вашего согласия.
-      </p>
+  <div id="stage1">
+    <div class="question">
+      Утро. Что ты берёшь с собой на рыбалку? Введи список предметов:
     </div>
+    <input type="text" id="itemsInput" placeholder="Например: паспорт, подписанная сеть, журнал">
+    <button onclick="checkItems()">Проверить</button>
+    <div id="result1" class="result"></div>
   </div>
+
+  <div id="stage2" class="hidden">
+    <div class="question">
+      Кто будет ставить сеть?
+    </div>
+    <input type="text" id="whoInput" placeholder="Например: я сам, мой сын">
+    <button onclick="checkWho()">Проверить</button>
+    <div id="result2" class="result"></div>
+  </div>
+
+  <script>
+    function normalize(text) {
+      return text.toLowerCase().replace(/ё/g, 'е').trim();
+    }
+
+    function checkItems() {
+      const input = normalize(document.getElementById("itemsInput").value);
+      const mustHave = ["паспорт", "подписанная сеть", "журнал"];
+      const hasAll = mustHave.every(item => input.includes(item));
+      const result = document.getElementById("result1");
+
+      if (hasAll) {
+        result.textContent = "✅ Ты взял всё необходимое. Переходи дальше.";
+        document.getElementById("stage2").classList.remove("hidden");
+      } else {
+        result.textContent = "❌ Штраф. Ты не взял все нужные документы или принадлежности.";
+        document.getElementById("stage2").classList.add("hidden");
+      }
+    }
+
+    function checkWho() {
+      const input = normalize(document.getElementById("whoInput").value);
+      const result = document.getElementById("result2");
+
+      if (input.includes("я")) {
+        result.textContent = "✅ Закон соблюдён. Ты сам ставишь сеть.";
+      } else {
+        result.textContent = "❌ Нарушение. Ты не имеешь права передавать эту обязанность.";
+      }
+    }
+  </script>
 </body>
 </html>
