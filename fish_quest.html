@@ -1,78 +1,94 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Квест: Попробуй выжить как коренной рыбак</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Квест: Попробуй выжить как коренной рыбак</title>
+<style>
     body {
-      font-family: sans-serif;
-      padding: 2rem;
-      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #f9f9f9;
+      color: #222;
     }
     h1 {
-      color: #222;
+      text-align: center;
+    }
+    .question {
+      margin: 2em 0 1em;
+    }
+    .hidden {
+      display: none;
+    }
+    .result {
+      font-weight: bold;
+      color: darkred;
+      margin-top: 1em;
     }
     input[type="text"] {
       width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+      padding: 0.5em;
+      font-size: 1em;
     }
     button {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      background-color: #e0e0e0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 2rem;
-      font-weight: bold;
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      margin-top: 0.5em;
     }
   </style>
 </head>
 <body>
-  <p>Вы идёте на традиционную рыбалку. Ваша задача — не быть оштрафованным, не нарушить закон, и, если повезёт, принести домой рыбу. Готовы?</p>
-
-  <p><strong>1. Что берёте с собой?</strong> (Введите всё необходимое через запятую)</p>
-  <p style="font-size: 0.9rem; color: #444;">Подсказка: вам понадобятся паспорт, промысловый журнал, путёвка, сеть с биркой, на которой указаны ваши ФИО и номер разрешения.</p>
-
-  <input type="text" id="input" placeholder="Например: паспорт, промысловый журнал, путёвка, сеть, бирка с ФИО и номером разрешения">
-  <button onclick="checkAnswer()">Проверить</button>
-
-  <div class="result" id="result"></div>
-
-  <script>
-    function normalize(str) {
-      return str.trim().toLowerCase().replace(/ё/g, "е");
+<h1>Квест: Попробуй выжить как коренной рыбак</h1>
+<div id="stage1">
+<div class="question">
+      Утро. Что ты берёшь с собой на рыбалку? Введи список предметов:
+    </div>
+<input id="itemsInput" placeholder="Например: паспорт, подписанная сеть, журнал" type="text"/>
+<button onclick="checkItems()">Проверить</button>
+<div class="result" id="result1"></div>
+</div>
+<div class="hidden" id="stage2">
+<div class="question">
+      Кто будет ставить сеть?
+    </div>
+<input id="whoInput" placeholder="Например: я сам, мой сын" type="text"/>
+<button onclick="checkWho()">Проверить</button>
+<div class="result" id="result2"></div>
+</div>
+<script>
+    function normalize(text) {
+      return text.toLowerCase().replace(/ё/g, 'е').trim();
     }
 
-    function checkAnswer() {
-      const input = document.getElementById("input").value;
-      const result = document.getElementById("result");
+    function checkItems() {
+      const input = normalize(document.getElementById("itemsInput").value);
+      const mustHave = ["паспорт", "подписанная сеть", "журнал"];
+      const hasAll = mustHave.every(item => input.includes(item));
+      const result = document.getElementById("result1");
 
-      const correctAnswers = [
-        "паспорт",
-        "промысловый журнал",
-        "путевка",
-        "сеть",
-        "бирка с фио и номером разрешения"
-      ];
-
-      const userAnswers = input.split(",").map(normalize);
-
-      const missing = correctAnswers.filter(item => !userAnswers.includes(item));
-
-      if (missing.length === 0) {
-        result.textContent = "✅ Всё есть. Вы готовы к рыбалке — по закону.";
-        result.style.color = "green";
+      if (hasAll) {
+        result.textContent = "✅ Ты взял всё необходимое. Переходи дальше.";
+        document.getElementById("stage2").classList.remove("hidden");
       } else {
-        result.textContent = "❌ Не хватает: " + missing.join(", ");
-        result.style.color = "red";
+        result.textContent = "❌ Штраф. Ты не взял все нужные документы или принадлежности.";
+        document.getElementById("stage2").classList.add("hidden");
+      }
+    }
+
+    function checkWho() {
+      const input = normalize(document.getElementById("whoInput").value);
+      const result = document.getElementById("result2");
+
+      if (input.includes("я")) {
+        result.textContent = "✅ Закон соблюдён. Ты сам ставишь сеть.";
+      } else {
+        result.textContent = "❌ Нарушение. Ты не имеешь права передавать эту обязанность.";
       }
     }
   </script>
-</body>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="True" frameborder="0" height="315" src="https://www.youtube.com/embed/uMoA7YzgOOw" title="YouTube video player" width="560"></iframe><div class="antipamyatka">🛑 АНТИПАМЯТКА ОТ РЕСПУБЛИКИ СУПА: 
+ Вы имеете право на пропитание. Вы имеете право на уважение. Вы имеете право на правду о своей земле. Эта 'памятка' создана не для того, чтобы вас защитить, а чтобы контролировать. Ваша память — ваш закон.</div></body>
 </html>
