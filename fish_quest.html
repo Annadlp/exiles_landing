@@ -1,113 +1,76 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Квест: Попробуй выжить как коренной рыбак</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Квест: Попробуй выжить как коренной рыбак</title>
+  <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 2em auto;
-      padding: 1em;
-      background-color: #f9f9f9;
-      color: #222;
+      font-family: sans-serif;
+      padding: 2rem;
+      background-color: #f8f8f8;
     }
     h1 {
-      text-align: center;
-    }
-    .question {
-      margin: 2em 0 1em;
-    }
-    .hidden {
-      display: none;
-    }
-    .result {
-      font-weight: bold;
-      color: darkred;
-      margin-top: 1em;
+      color: #222;
     }
     input[type="text"] {
       width: 100%;
-      padding: 0.5em;
-      font-size: 1em;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     button {
-      padding: 0.6em 1.2em;
-      font-size: 1em;
-      margin-top: 0.5em;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 2rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <p>Вы идёте на традиционную рыбалку. Ваша задача — не быть оштрафованным, не нарушить закон, и, если повезёт, принести домой рыбу. Готовы?</p>
 
-<div id="quiz-container">
-<div id="intro">
-<p>Вы идёте на традиционную рыбалку. Ваша задача — не быть оштрафованным, не нарушить закон, и, если повезёт, принести домой рыбу. Готовы?</p>
-</div>
-<div class="question" id="q1">
-<p><strong>1. Что берёте с собой?</strong> (Введите всё необходимое через запятую)</p>
-<input id="answer1" type="text"/>
-<button onclick="checkAnswer1()">Проверить</button>
-<div id="feedback1"></div>
-</div>
-<div class="question" id="q2" style="display:none;">
-<p><strong>2. Кто будет ставить сеть?</strong> (Введите одно слово)</p>
-<input id="answer2" type="text"/>
-<button onclick="checkAnswer2()">Проверить</button>
-<div id="feedback2"></div>
-</div>
-<div class="question" id="q3" style="display:none;">
-<p><strong>3. Поймали рыбу. Что будете делать?</strong></p>
-<input id="answer3" type="text"/>
-<button onclick="checkAnswer3()">Проверить</button>
-<div id="feedback3"></div>
-</div>
-<div class="question" id="q4" style="display:none;">
-<p><strong>4. Поймали больше, чем разрешено. Что будете делать?</strong></p>
-<input id="answer4" type="text"/>
-<button onclick="checkAnswer4()">Проверить</button>
-<div id="feedback4"></div>
-</div>
-<div class="question" id="q5" style="display:none;">
-<p><strong>5. Ничего не поймали. Что будете делать?</strong></p>
-<input id="answer5" type="text"/>
-<button onclick="checkAnswer5()">Проверить</button>
-<div id="feedback5"></div>
-</div>
-</div>
-<h1>Квест: Попробуй выжить как коренной рыбак</h1>
+  <p><strong>1. Что берёте с собой?</strong> (Введите всё необходимое через запятую)</p>
+  <p style="font-size: 0.9rem; color: #444;">Подсказка: вам понадобятся паспорт, промысловый журнал, путёвка, сеть с биркой, на которой указаны ваши ФИО и номер разрешения.</p>
 
+  <input type="text" id="input" placeholder="Например: паспорт, промысловый журнал, путёвка, сеть, бирка с ФИО и номером разрешения">
+  <button onclick="checkAnswer()">Проверить</button>
 
-<script>
-    function normalize(text) {
-      return text.toLowerCase().replace(/ё/g, 'е').trim();
+  <div class="result" id="result"></div>
+
+  <script>
+    function normalize(str) {
+      return str.trim().toLowerCase().replace(/ё/g, "е");
     }
 
-    function checkItems() {
-      const input = normalize(document.getElementById("itemsInput").value);
-      const mustHave = ["паспорт", "подписанная сеть", "журнал"];
-      const hasAll = mustHave.every(item => input.includes(item));
-      const result = document.getElementById("result1");
+    function checkAnswer() {
+      const input = document.getElementById("input").value;
+      const result = document.getElementById("result");
 
-      if (hasAll) {
-        result.textContent = "✅ Ты взял всё необходимое. Переходи дальше.";
-        document.getElementById("stage2").classList.remove("hidden");
+      const correctAnswers = [
+        "паспорт",
+        "промысловый журнал",
+        "путевка",
+        "сеть",
+        "бирка с фио и номером разрешения"
+      ];
+
+      const userAnswers = input.split(",").map(normalize);
+
+      const missing = correctAnswers.filter(item => !userAnswers.includes(item));
+
+      if (missing.length === 0) {
+        result.textContent = "✅ Всё есть. Вы готовы к рыбалке — по закону.";
+        result.style.color = "green";
       } else {
-        result.textContent = "❌ Штраф. Ты не взял все нужные документы или принадлежности.";
-        document.getElementById("stage2").classList.add("hidden");
-      }
-    }
-
-    function checkWho() {
-      const input = normalize(document.getElementById("whoInput").value);
-      const result = document.getElementById("result2");
-
-      if (input.includes("я")) {
-        result.textContent = "✅ Закон соблюдён. Ты сам ставишь сеть.";
-      } else {
-        result.textContent = "❌ Нарушение. Ты не имеешь права передавать эту обязанность.";
+        result.textContent = "❌ Не хватает: " + missing.join(", ");
+        result.style.color = "red";
       }
     }
   </script>
