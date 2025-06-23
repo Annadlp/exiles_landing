@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Квест: Попробуй выжить как коренной рыбак</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Квест: Попробуй выжить как коренной рыбак</title>
+<style>
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
@@ -40,27 +41,46 @@
   </style>
 </head>
 <body>
-  <h1>Квест: Попробуй выжить как коренной рыбак</h1>
 
-  <div id="stage1">
-    <div class="question">
-      Утро. Что ты берёшь с собой на рыбалку? Введи список предметов:
-    </div>
-    <input type="text" id="itemsInput" placeholder="Например: паспорт, подписанная сеть, журнал">
-    <button onclick="checkItems()">Проверить</button>
-    <div id="result1" class="result"></div>
-  </div>
+<div id="quiz-container">
+<div id="intro">
+<p>Вы идёте на традиционную рыбалку. Ваша задача — не быть оштрафованным, не нарушить закон, и, если повезёт, принести домой рыбу. Готовы?</p>
+</div>
+<div class="question" id="q1">
+<p><strong>1. Что берёте с собой?</strong> (Введите всё необходимое через запятую)</p>
+<input id="answer1" type="text"/>
+<button onclick="checkAnswer1()">Проверить</button>
+<div id="feedback1"></div>
+</div>
+<div class="question" id="q2" style="display:none;">
+<p><strong>2. Кто будет ставить сеть?</strong> (Введите одно слово)</p>
+<input id="answer2" type="text"/>
+<button onclick="checkAnswer2()">Проверить</button>
+<div id="feedback2"></div>
+</div>
+<div class="question" id="q3" style="display:none;">
+<p><strong>3. Поймали рыбу. Что будете делать?</strong></p>
+<input id="answer3" type="text"/>
+<button onclick="checkAnswer3()">Проверить</button>
+<div id="feedback3"></div>
+</div>
+<div class="question" id="q4" style="display:none;">
+<p><strong>4. Поймали больше, чем разрешено. Что будете делать?</strong></p>
+<input id="answer4" type="text"/>
+<button onclick="checkAnswer4()">Проверить</button>
+<div id="feedback4"></div>
+</div>
+<div class="question" id="q5" style="display:none;">
+<p><strong>5. Ничего не поймали. Что будете делать?</strong></p>
+<input id="answer5" type="text"/>
+<button onclick="checkAnswer5()">Проверить</button>
+<div id="feedback5"></div>
+</div>
+</div>
+<h1>Квест: Попробуй выжить как коренной рыбак</h1>
 
-  <div id="stage2" class="hidden">
-    <div class="question">
-      Кто будет ставить сеть?
-    </div>
-    <input type="text" id="whoInput" placeholder="Например: я сам, мой сын">
-    <button onclick="checkWho()">Проверить</button>
-    <div id="result2" class="result"></div>
-  </div>
 
-  <script>
+<script>
     function normalize(text) {
       return text.toLowerCase().replace(/ё/g, 'е').trim();
     }
@@ -91,19 +111,5 @@
       }
     }
   </script>
-
-<div class="quest-final-note">
-    <p>Вы завершили квест! Но помните: если вы не поймали ни одной рыбы, вы всё равно обязаны подать <strong>нулевой отчет</strong>.</p>
-    
-<div class="tooltip">
-    <span class="tooltiptext">
-        Даже если вы не ловили рыбу, по правилам нужно сдать "нулевой отчет".<br>
-        <strong>Факт подачи заявки уже влечет обязанность отчитаться</strong>, даже если вы уехали и не были на месте.
-        <br><br>Права есть? Тогда будут и обязанности :)
-    </span>
-</div>
-
-</div>
-
 </body>
 </html>
